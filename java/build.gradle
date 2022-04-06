@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.7.0-M3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id "com.graphql_java_generator.graphql-gradle-plugin" version "1.18.5"
 }
 
 group = 'com.example'
@@ -29,8 +30,22 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.graphql:spring-graphql-test'
+
+    // https://mvnrepository.com/artifact/com.graphql-java-generator/graphql-java-common-runtime
+    implementation 'com.graphql-java-generator:graphql-java-common-runtime:1.18.5'
+
+//    // Used in InputParameter
+//    implementation 'org.apache.commons:commons-text:1.9'
+//    // Used in AbstractGraphQLRequest
+//    implementation 'org.eclipse.jetty.websocket:websocket-client:9.4.46.v20220331'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+generatePojo {
+    packageName = 'com.example.graphqltest.graphql'
+    schemaFileFolder = "${projectDir}/src/main/resources/graphql"
+}
+sourceSets.main.java.srcDirs += '/build/generated/sources/graphqlGradlePlugin'

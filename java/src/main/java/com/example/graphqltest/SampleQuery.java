@@ -1,5 +1,6 @@
 package com.example.graphqltest;
 
+import com.example.graphqltest.graphql.GreeterResponse;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
@@ -13,8 +14,8 @@ public class SampleQuery {
     @QueryMapping
     public GreeterResponse greeter() {
         return GreeterResponse.builder()
-                .id("1234")
-                .message("HELLO")
+                .withId("1234")
+                .withMessage("HELLO")
                 .build();
     }
 }
