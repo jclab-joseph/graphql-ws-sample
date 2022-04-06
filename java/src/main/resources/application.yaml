@@ -1,0 +1,10 @@
+server:
+  port: 9000
+
+spring:
+  graphql:
+    path: /graphql
+    websocket:
+      path: /graphql
+    schema:
+      locations: classpath:graphql/**

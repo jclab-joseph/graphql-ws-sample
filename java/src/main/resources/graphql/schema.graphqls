@@ -1,0 +1,9 @@
+type GreeterResponse {
+  id: ID!
+  message: String
+}
+
+type Query {
+    hello: String
+    greeter: GreeterResponse
+}
